@@ -39,11 +39,11 @@ npx -y @modelcontextprotocol/inspector uv run mcp run openerz.py
 ## Run as docker
 
 ```
-docker build -t mcp-openerz .
+docker build -t mcp-odi .
 ```
 
 ```
-docker run -p 7070:8000 mcp-openerz
+docker run -p 7070:8000 mcp-odi
 ```
 
 ```
@@ -52,11 +52,11 @@ npx @modelcontextprotocol/inspector@0.16.8
 
 URL: http://127.0.0.1:7070/mcp
 
-get_next_waste_collection_for_type
+Select tool "get_next_waste_collection_for_type" and enter for example the following values
 
-waste_type: paper
-region: zurich
-area: 8032
+* waste_type: paper
+* region: zurich
+* zip: 8032
 
 ## Health Check
 
