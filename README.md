@@ -50,7 +50,7 @@ docker run -p 7070:8000 mcp-odi
 npx @modelcontextprotocol/inspector@0.16.8
 ```
 
-URL: http://127.0.0.1:7070/mcp
+Connect to URL: http://127.0.0.1:7070/mcp
 
 Select tool "get_next_waste_collection_for_type" and enter for example the following values
 
