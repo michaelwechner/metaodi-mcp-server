@@ -36,7 +36,7 @@ MCP Inspector:
 npx -y @modelcontextprotocol/inspector uv run mcp run openerz.py
 ```
 
-## Run as docker
+## Run as Docker
 
 ```
 docker build -t mcp-odi .
