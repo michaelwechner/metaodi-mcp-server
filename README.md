@@ -36,6 +36,28 @@ MCP Inspector:
 npx -y @modelcontextprotocol/inspector uv run mcp run openerz.py
 ```
 
+## Run as docker
+
+```
+docker build -t mcp-openerz .
+```
+
+```
+docker run -p 7070:8000 mcp-openerz
+```
+
+```
+npx @modelcontextprotocol/inspector@0.16.8
+```
+
+URL: http://127.0.0.1:7070/mcp
+
+get_next_waste_collection_for_type
+
+waste_type: paper
+region: zurich
+area: 8032
+
 ## Health Check
 
 The deployed server on Fly.io has automated health checks that run:
