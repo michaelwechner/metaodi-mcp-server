@@ -39,8 +39,9 @@ async def get_waste_collection_data(region: str, waste_type: str | None = None, 
     """Get next waste collection for a region and waste type.
 
     Args:
-        region: The region to get waste collection information for
-        waste_type: The type of waste to get collection information for
+        region: The region (e.g., "zurich") to get waste collection information for.
+        waste_type: The type of waste (e.g., "paper", "cardboard") to get collection information for.
+        area: The area (e.g., "8032") within the region to get waste collection information for.
     """
     # Validate region against server-provided list (if available)
     regions_url = f"{OPENERZ_API}/parameter/regions"
@@ -82,13 +83,13 @@ async def get_waste_collection_data(region: str, waste_type: str | None = None, 
     return "\n---\n".join(formatted)
 
 @mcp.tool()
-async def get_next_waste_collection_for_type(waste_type: str, region: str, area: str | None = None) -> str:
-    """Get next waste collection for a region for a specific waste type.
+async def get_next_waste_collection_for_type(waste_type: str, region: str, zip: str | None = None) -> str:
+    """Get next waste collection dates for a region for a specific waste type.
 
     Args:
-        waste_type: The type of waste to get collection information for (e.g., "paper", "cardboard")
-        region: The region to get waste collection information for
-        area: The area within the region to get waste collection information for
+        waste_type: The type of waste (e.g., "paper", "cardboard") to get collection dates for.
+        region: The region (e.g., "zurich") to get waste collection dates for.
+        zip: The zip code (e.g., "8032") within the region to get waste collection dates for.
     """
     # Validate waste type against server-provided list (if available)
     types_url = f"{OPENERZ_API}/parameter/types"
@@ -97,7 +98,7 @@ async def get_next_waste_collection_for_type(waste_type: str, region: str, area:
 
     if not types_data or waste_type not in types_data.get("result", []):
         return f"Waste type '{waste_type}' is not valid for region '{region}'. Use the 'list_waste_types' tool to see valid values."
-    return await get_waste_collection_data(region, waste_type=waste_type, area=area)
+    return await get_waste_collection_data(region, waste_type=waste_type, area=zip)
 
 @mcp.tool()
 async def get_next_waste_collection(region: str, area: str | None = None) -> str:
